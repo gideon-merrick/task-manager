@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import { assigneeService } from "../features/assignee/service";
-import { guard } from "../lib/guard";
-import type { AppVariables } from "../lib/types";
-import { validate } from "../lib/validate";
+import { guard } from "@/server/lib/guard";
+import type { AppVariables } from "@/server/lib/types";
+import { validate } from "@/server/lib/validate";
+import { assigneeService } from "./assignee.service";
 
 export const assignUserSchema = z.object({
   userId: z.string(),

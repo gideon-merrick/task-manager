@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import { taskService } from "../features/task/service";
-import { guard } from "../lib/guard";
-import type { AppVariables } from "../lib/types";
-import { validate } from "../lib/validate";
+import { guard } from "@/server/lib/guard";
+import type { AppVariables } from "@/server/lib/types";
+import { validate } from "@/server/lib/validate";
+import { taskService } from "./task.service";
 
 export const createTaskSchema = z.object({
   title: z.string(),

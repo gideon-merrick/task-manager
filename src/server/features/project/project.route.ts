@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import { ProjectRole } from "../../../prisma/generated/enums";
-import { projectService } from "../features/project/project.service";
-import { guard } from "../lib/guard";
-import type { AppVariables } from "../lib/types";
-import { validate } from "../lib/validate";
+import { guard } from "@/server/lib/guard";
+import type { AppVariables } from "@/server/lib/types";
+import { validate } from "@/server/lib/validate";
+import { ProjectRole } from "../../../../prisma/generated/enums";
+import { projectService } from "./project.service";
 
 export const createSchema = z.object({
   name: z.string(),

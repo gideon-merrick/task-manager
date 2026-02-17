@@ -13,7 +13,9 @@
     "db:down": "docker compose down",
     "db:clean": "docker compose down -v",
     "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev"
+    "db:migrate": "prisma migrate dev",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.7.6",
@@ -33,7 +35,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.15",
+    "@biomejs/biome": "2.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.16.0",
@@ -43,6 +45,6 @@
     "prisma": "^7.4.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "ultracite": "7.2.1"
+    "ultracite": "7.2.3"
   }
 }
