@@ -1,0 +1,13 @@
+node_modules/
+coverage/
+out/
+build/
+.next/
+.vscode/
+.zed/
+
+.env
+.vercel
+
+next-env.d.ts
+prisma/generated

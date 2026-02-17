@@ -1,0 +1,48 @@
+{
+  "name": "next-hono",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "biome:lint": "biome lint",
+    "biome:format": "biome format --write",
+    "biome:fix": "biome check --write",
+    "db:up": "docker compose up",
+    "db:down": "docker compose down",
+    "db:clean": "docker compose down -v",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.6",
+    "@prisma/adapter-pg": "^7.4.0",
+    "@prisma/client": "^7.4.0",
+    "@tanstack/react-form": "^1.28.3",
+    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/zod-form-adapter": "^0.42.1",
+    "better-auth": "^1.4.18",
+    "dotenv": "^17.3.1",
+    "hono": "^4.11.9",
+    "lucide-react": "^0.564.0",
+    "next": "16.1.6",
+    "pg": "^8.18.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.15",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.16.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "daisyui": "^5.5.18",
+    "prisma": "^7.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "ultracite": "7.2.1"
+  }
+}
