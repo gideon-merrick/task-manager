@@ -3,6 +3,7 @@
 import { Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FormError } from "@/components/form/form-error";
 import { FormField } from "@/components/form/form-field";
 import { FormRoot } from "@/components/form/form-root";
 import { FormSubmit } from "@/components/form/form-submit";
@@ -12,13 +13,23 @@ export default function RegisterPage() {
   const router = useRouter();
 
   const handleSubmit = async (value: { name: string; email: string; password: string }) => {
-    await authClient.signUp.email({
-      name: value.name,
-      email: value.email,
-      password: value.password,
-    });
-    router.push("/");
-  };
+    await authClient.signUp.email(
+      {
+        name: value.name,
+        email: value.email,
+        password: value.password,
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (c) => {
+          console.log(c.error);
+          throw new Error(c.error.message || "Something went wrong. Please try again.");
+        },
+      }
+    );
+ };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-base-200">
@@ -29,6 +40,7 @@ export default function RegisterPage() {
             <FormField icon={<User />} name="name" placeholder="James" type="text" />
             <FormField icon={<Mail />} name="email" placeholder="james@mail.com" type="email" />
             <FormField icon={<Lock />} name="password" placeholder="********" type="password" />
+            <FormError />
             <FormSubmit>Register</FormSubmit>
           </FormRoot>
           <div className="divider">OR</div>

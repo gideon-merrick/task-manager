@@ -3,6 +3,7 @@
 import { Lock, Mail } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FormError } from "@/components/form/form-error";
 import { FormField } from "@/components/form/form-field";
 import { FormRoot } from "@/components/form/form-root";
 import { FormSubmit } from "@/components/form/form-submit";
@@ -12,11 +13,21 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleSubmit = async (values: { email: string; password: string }) => {
-    await authClient.signIn.email({
-      email: values.email,
-      password: values.password,
-    });
-    router.push("/");
+    await authClient.signIn.email(
+      {
+        email: values.email,
+        password: values.password,
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (c) => {
+          console.log(c.error);
+          throw new Error(c.error.message || "Something went wrong. Please try again.");
+        },
+      }
+    );
   };
 
   return (
@@ -27,6 +38,7 @@ export default function LoginPage() {
           <FormRoot defaultValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
             <FormField icon={<Mail />} name="email" placeholder="james@mail.com" type="email" />
             <FormField icon={<Lock />} name="password" placeholder="********" type="password" />
+            <FormError />
             <FormSubmit>Log In</FormSubmit>
           </FormRoot>
           <div className="divider">OR</div>

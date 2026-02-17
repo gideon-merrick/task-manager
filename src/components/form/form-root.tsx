@@ -5,16 +5,22 @@ import type { ReactNode } from "react";
 import { FormContext } from "./form-context";
 
 interface Props<T = Record<string, unknown>> {
+  children: ReactNode;
   defaultValues: T;
   onSubmit: (values: T) => void | Promise<void>;
-  children: ReactNode;
 }
 
 export function FormRoot<T = Record<string, unknown>>({ defaultValues, onSubmit, children }: Props<T>) {
   const form = useForm({
     defaultValues,
     onSubmit: async ({ value }) => {
-      await onSubmit(value);
+      try {
+        await onSubmit(value);
+      } catch (error) {
+        form.setErrorMap({
+          onSubmit: (error instanceof Error ? error.message : "Something went wrong.") as never,
+        });
+      }
     },
   });
 

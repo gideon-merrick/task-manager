@@ -4,8 +4,8 @@ import type { InputHTMLAttributes, ReactNode } from "react";
 import { useFormContext } from "./form-context";
 
 interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "form"> {
-  name: string;
   icon: ReactNode;
+  name: string;
 }
 
 export function FormField({ name, icon, ...inputProps }: Props) {
