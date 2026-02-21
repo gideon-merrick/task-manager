@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:17-alpine
-    container_name: next-hono-db
+    container_name: task-manager-db
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password

@@ -1,12 +1,19 @@
 "use client";
 
-import { ProjectsList } from "@/components/projects-list";
+import { Projects } from "@/components/projects";
 
 export default function HomePage() {
   return (
     <div>
-      <h1>Hello, World!</h1>
-      <ProjectsList />
+      <Projects.Root>
+        <main className="mx-auto w-full max-w-4xl p-8">
+          <Projects.Header />
+          <section className="mt-8">
+            <Projects.List />
+          </section>
+          <Projects.Modal />
+        </main>
+      </Projects.Root>
     </div>
   );
 }
